@@ -9,15 +9,21 @@ class Pessoa:                                                          #atributo
 
     def cumplimentar(self):                                            #criando o metodp comprimentar #lenbra uma execusao de uma função
         return f' ola {id(self)}'
+    @staticmethod                                                       #criando metodo estatio. não cria (self) poisnão depende do atribudo mas pode ser chamado
+    def metodo_estatico():                                              # dando nome (metodo_estatico) a def (função atrelada a class)
+        return 31
+    @classmethod                                                       ###criando outra class (estatica)
+    def nome_e_atributos_de_class(cls):                                ###criando um def do tipo >cls<(referente a class pessoa)
+         return f'{cls}-olhos{cls.olhos}'                              #(cls)acessar dados da propria class  retorna def(função)com atribuindo a(olhos) por (cls) como estatico                     ###
 if __name__ == '__name__':
     alikan = Pessoa(nome='alikan')                                      #obejeto do tipo complexo alikan
     caboclo = Pessoa(alikan,nome='silva')                               #passando como atributo alikan
-    print(Pessoa.cumplimentar(caboclo))
+    print(Pessoa.cumplimentar(caboclo))                                 ###chamando a class(pessoa) pelo metodo(def) mas tendo que passar o objeto(nome)
     print(id(caboclo))
     print(caboclo.cumplimentar())
     print(caboclo.nome)
     print(caboclo.idade)
-    for filho in caboclo.filhos:                                       # FOR= para filho insira no objeto com o atributo e passe filhos.nome(o atributo dentro da list)
+    for filho in caboclo.filhos:                                       # FOR= para filho insira no objeto como atributo e passe filhos.nome(o atributo dentro da list)
         print(filho.nome)
     print(caboclo.filhos)
     del caboclo.filhos                                                  #deletando atributo dinâmico
@@ -31,3 +37,5 @@ if __name__ == '__name__':
     print(caboclo.olhos)                                                ### se o atributo de class for ingual a para todos objetos nao cria objeto mas pode
     print(alikan.olhos)                                                 ###  ser auterado dentro do objeto
     print(id(Pessoa.olhos), id(caboclo.olhos),id(alikan.olhos))
+    print(Pessoa.nome_e_atributos_de_class(),caboclo.nome_e_atributos_de_class()) ### acessando o metodo estatico por class ou objeto da class
+    print(Pessoa.metodo_estatico()),(caboclo.metodo_estatico())         #chamando o metode_estatico pela claa ou objeto
